@@ -6,8 +6,8 @@ app.set("view engine", "ejs");
 app.get("/results", function(req,res){
 	//APi call
 	var query = req.query.search;
-	var url = "http://omdapi.com/?s=" + query;
-	request("http://omdbapi.com/?s=california", function(error, res, body){
+	var url = "http://omdapi.com/?s=" + query + "&apikey=thewdb";
+	request(url, function(error, res, body){
 		if(!error && response.statusCode==200){
 			var data = JSON.parse(body);
 			res.render("results", {data: data});
